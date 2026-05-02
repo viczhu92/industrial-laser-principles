@@ -1,0 +1,53 @@
+name: 💡 Feature Request
+description: Suggest a new skill, new reference content, or improvement to existing ones
+title: "[Feature] "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting an improvement. The most useful proposals are anchored in a real production scenario — please describe one below.
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: What kind of feature?
+      options:
+        - New skill
+        - New reference doc / section
+        - Improvement to existing skill
+        - Improvement to existing reference
+        - Tooling / install / lib script
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: What scenario does this address?
+      description: A real production scenario where the skill or content would be useful.
+      placeholder: |
+        e.g. "I'm onboarding a new operator and need to verify they can run a power-meter routine correctly the first time. The current skill walks them through, but doesn't validate they did each step right."
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: What would the new feature do? How would the operator interact with it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What other approaches did you consider, and why did you discard them?
+
+  - type: textarea
+    id: references
+    attributes:
+      label: Reference material
+      description: External docs, papers, or vendor manuals that would help build this.

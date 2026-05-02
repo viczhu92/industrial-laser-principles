@@ -1,0 +1,92 @@
+name: 🐛 Bug Report
+description: A skill produced a wrong, unsafe, or unexpected answer
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for filing a bug. The fields below help us reproduce and triage quickly. The more concrete, the faster we can fix.
+
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Which skill?
+      description: Which skill (or skills) was active when the bug occurred?
+      options:
+        - laser-doe-ablation
+        - laser-doe-dicing
+        - laser-troubleshoot
+        - laser-defect-diagnose
+        - laser-delay-tuner
+        - laser-power-measurement
+        - laser-optics-cleaning
+        - other / not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: What did you ask Claude?
+      description: Paste the exact prompt or describe the request as precisely as you can.
+      placeholder: |
+        e.g. "Use laser-doe-ablation to help me develop a recipe for marking anodized aluminum at 1064 nm, 50 kHz, 100 W"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      description: What should the skill have done?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happened?
+      description: What did the skill do instead? Paste relevant transcript snippets if helpful.
+    validations:
+      required: true
+
+  - type: input
+    id: reference-cited
+    attributes:
+      label: Which reference section did Claude cite (if any)?
+      description: e.g. "laser_ablation.md §12" or "didn't cite anything". This is the most diagnostic single field — please fill it.
+      placeholder: laser_ablation.md §12
+
+  - type: textarea
+    id: laser-context
+    attributes:
+      label: Laser / system context (if relevant)
+      description: Wavelength, power, PRF, pulse width, focal spot, material, etc.
+      placeholder: |
+        Wavelength: 1064 nm
+        Power: 100 W avg
+        PRF: 50 kHz
+        Pulse width: 50 ns
+        Focal spot: ~30 µm
+        Material: anodized aluminum, 1 mm
+      render: text
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How bad is this if it happens to someone else?
+      options:
+        - Critical — wrong answer in a safety-critical step (PPE, beam exposure, optic damage)
+        - High — wrong technical answer that would damage hardware or part
+        - Medium — wrong answer that would mislead but not damage
+        - Low — cosmetic, citation missing, formatting
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Screenshots, photos of the workpiece, anything else relevant.

@@ -1,0 +1,56 @@
+name: 🧪 Real-World Scenario
+description: A production scenario the skills don't handle well (or at all)
+title: "[Scenario] "
+labels: ["scenario", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us about a real production scenario where the skills fell short. The more concrete, the better — these scenarios drive future skill development.
+
+  - type: textarea
+    id: scenario
+    attributes:
+      label: Describe the scenario
+      description: What were you trying to do? What happened?
+      placeholder: |
+        e.g. "Operator needed to qualify a new optic supplier — wanted to compare damage thresholds across three vendor samples. No skill exists for this; closest is the laser_optics_selection reference but no workflow."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: existing
+    attributes:
+      label: Does an existing skill come close?
+      options:
+        - "No — completely new territory"
+        - "Yes — but it stops short of what's needed"
+        - "Yes — but the workflow is wrong for this scenario"
+    validations:
+      required: true
+
+  - type: textarea
+    id: closest-skill
+    attributes:
+      label: Closest existing skill (if any), and why it falls short
+      placeholder: |
+        e.g. "laser-optics-cleaning gets you through a single optic, but doesn't handle multi-vendor comparison."
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this scenario come up?
+      options:
+        - Daily
+        - Weekly
+        - Monthly
+        - Quarterly or rarer
+        - One-time / project-driven
+    validations:
+      required: true
+
+  - type: textarea
+    id: ideal
+    attributes:
+      label: Ideal workflow
+      description: If the perfect skill existed, what would it walk you through?

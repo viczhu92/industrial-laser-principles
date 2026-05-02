@@ -1,0 +1,71 @@
+name: 📚 Reference Gap
+description: Reference docs are missing, wrong, or unclear about something
+title: "[Reference] "
+labels: ["documentation", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The references are the foundation of every skill, so accuracy and completeness here matter most. Thanks for helping us improve them.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of gap?
+      options:
+        - Missing — topic not covered at all
+        - Wrong — content is technically incorrect
+        - Unclear — content is correct but confusing
+        - Outdated — content was correct but is now superseded
+        - Citation needed — claim should have a source attached
+    validations:
+      required: true
+
+  - type: dropdown
+    id: doc
+    attributes:
+      label: Which reference doc?
+      options:
+        - gaussian_beam_theory.md
+        - laser_process_calculations.md
+        - measuring-laser-power.md
+        - laser_optics_selection.md
+        - laser_optics_cleaning.md
+        - scanner_alignment.md
+        - scanner_optimization.md
+        - laser_welding.md
+        - laser_ablation.md
+        - laser_dicing.md
+        - new doc proposed
+    validations:
+      required: true
+
+  - type: input
+    id: section
+    attributes:
+      label: Section / line
+      description: Which section or line, if applicable?
+      placeholder: e.g. "§4 Damage Threshold and Sizing" or "table after §6"
+
+  - type: textarea
+    id: current
+    attributes:
+      label: What does it say now?
+      description: Quote or paraphrase the current content (or "nothing — it's not covered").
+    validations:
+      required: true
+
+  - type: textarea
+    id: correct
+    attributes:
+      label: What should it say?
+      description: The correct, complete, or clearer version.
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: Source for the correction
+      description: Vendor datasheet, textbook, paper, or operational experience that supports this.
+      placeholder: e.g. "Edmund Optics technical note on damage threshold scaling"

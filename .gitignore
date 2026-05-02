@@ -1,0 +1,32 @@
+# macOS / OS
+.DS_Store
+Thumbs.db
+*~
+
+# Vendor PDFs (third-party copyrighted material — not redistributable)
+references/Manual Collection/
+
+# User run artifacts (skill outputs are per-user / per-run, not committed)
+outputs/*
+!outputs/.gitkeep
+
+# Python (for future lib/ scripts)
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Excel lock files
+~$*.xlsx
+~$*.xls
+
+# Claude / agent runtime artifacts (just in case)
+.claude/

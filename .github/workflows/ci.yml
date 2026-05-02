@@ -1,0 +1,104 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  forbidden-content:
+    name: Forbidden Phrase Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan all markdown for forbidden source markers
+        run: |
+          set -e
+          # These phrases must never appear in any committed .md file in this repo
+          FORBIDDEN='enovix|301537|200044|proprietary and confidential|uncontrolled copy|Doc Control System|verify correct version'
+
+          echo "Scanning all .md files for forbidden source markers..."
+          if grep -rinE "$FORBIDDEN" --include='*.md' . ; then
+            echo ""
+            echo "❌ FAIL: Forbidden source markers found in committed files."
+            echo "These cannot be published — please remove the offending text before merging."
+            exit 1
+          fi
+          echo "✓ Clean — no forbidden source markers found."
+
+  frontmatter:
+    name: SKILL.md Frontmatter Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate frontmatter on every SKILL.md
+        run: |
+          set -e
+          fail=0
+          for f in skills/*/SKILL.md; do
+            echo "Checking $f"
+
+            # Must start with YAML frontmatter delimiter
+            first_line=$(head -1 "$f")
+            if [ "$first_line" != "---" ]; then
+              echo "  ❌ does not start with YAML frontmatter (---)"
+              fail=1
+              continue
+            fi
+
+            # Extract frontmatter block
+            head=$(awk 'BEGIN{p=0} /^---$/{p++; next} p==1{print}' "$f")
+
+            # Required fields
+            if ! printf '%s\n' "$head" | grep -q "^name:"; then
+              echo "  ❌ missing 'name:' in frontmatter"
+              fail=1
+            fi
+            if ! printf '%s\n' "$head" | grep -q "^description:"; then
+              echo "  ❌ missing 'description:' in frontmatter"
+              fail=1
+            fi
+          done
+
+          if [ "$fail" = "1" ]; then
+            echo ""
+            echo "❌ One or more SKILL.md files failed frontmatter check."
+            exit 1
+          fi
+          echo "✓ All SKILL.md files have valid frontmatter."
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            **/*.md
+            !.github/**
+            !node_modules/**
+
+  link-check:
+    name: Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Lychee link check
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --max-retries 2
+            --timeout 20
+            --accept 200,201,202,203,204,206,301,302,308,403,429,999
+            --exclude 'linkedin\.com'
+            './**/*.md'
+          fail: true
