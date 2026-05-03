@@ -324,9 +324,9 @@ Ablation, dicing, and welding share some math but diverge fast. Forcing them int
 
 ---
 
-## 👤 About the Author
+## 👤 About
 
-Built by **[Victor Zhu](https://github.com/viczhu92)** — manufacturing process engineer focused on industrial laser applications across electronics, semiconductor, and precision manufacturing. Connect on [LinkedIn](https://www.linkedin.com/in/victorzhu1/).
+Built by an industrial laser process engineer with hands-on experience across electronics, semiconductor, and precision manufacturing — open-sourced so others doing the same work don't have to start from zero.
 
 ## 🙏 Acknowledgments
 

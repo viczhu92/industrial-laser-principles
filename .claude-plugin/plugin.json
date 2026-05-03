@@ -3,8 +3,8 @@
   "description": "Step-gated, reference-grounded Claude Code skills for industrial laser process engineering. Seven specialists covering DOE (ablation, dicing), troubleshooting, defect diagnosis, delay tuning, optics cleaning, and power measurement, all grounded in ten reference docs and a shared INSTRUCTIONS.md rulebook.",
   "version": "0.1.0",
   "author": {
-    "name": "Victor Zhu",
-    "url": "https://github.com/viczhu92"
+    "name": "industrial-laser-principles contributors",
+    "url": "https://github.com/viczhu92/industrial-laser-principles"
   },
   "homepage": "https://github.com/viczhu92/industrial-laser-principles",
   "license": "MIT",

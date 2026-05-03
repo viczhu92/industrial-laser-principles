@@ -30,3 +30,14 @@ venv/
 
 # Claude / agent runtime artifacts (just in case)
 .claude/
+
+# Employer / personal-confidential documents (NEVER commit to public repo)
+*Employee Handbook*
+*Enovix*
+*PIIA*
+*offer letter*
+*confidential*
+*Confidentiality*
+*Inventions*Assignment*
+*Privacy Notice*
+*Employee*Notice*
