@@ -95,7 +95,7 @@ Damage threshold is published as a fluence (J/cm²) at a specific wavelength and
 Max pulse energy ≈ Damage_threshold [J/cm²] × Beam_area [cm²] / 2
 ```
 
-The factor of 2 accounts for the Gaussian profile — **peak fluence at the beam center is twice the average over the spot.** (Derivation in `gaussian_beam_theory.md` §3.)
+The factor of 2 accounts for the Gaussian profile — **peak fluence at the beam center is twice the average over the spot.** (Derivation in `gaussian_beam_theory.md` §2.)
 
 ### Scaling damage threshold to a different pulse width
 

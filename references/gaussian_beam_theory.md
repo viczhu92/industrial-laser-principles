@@ -183,18 +183,36 @@ M² = (ω₀ · θ)_actual / (ω₀ · θ)_perfect_gaussian
 | 1.5–3 | Mediocre | Multimode fiber, poorly aligned |
 | 3+ | Poor | Multimode bulk, fiber-coupled diodes |
 
-### Where M² shows up
+### Where M² shows up (at fixed focusing geometry: same ω_f, F, λ)
 
 ```
-ω₀ ∝ M²              (focused spot scales linearly with M²)
-z_R ∝ 1/M²           (Rayleigh range shrinks with M²)
-DoF ∝ 1/M²           (depth of focus shrinks)
-F_peak ∝ 1/(M²)²     (peak fluence drops quadratically — both spot grows AND DoF shrinks)
+ω₀ ∝ M²              (focused waist grows linearly with M²)
+θ_far = ω_f / F      (far-field divergence is set by geometry, NOT by M²)
+z_R ∝ M²             (Rayleigh range GROWS with M²)
+DoF = 2·z_R ∝ M²     (depth of focus grows proportionally)
+F_peak ∝ 1/(M²)²     (peak fluence drops quadratically — spot area grows ∝ (M²)²)
+I_peak ∝ 1/(M²)²     (same reason as F_peak)
 ```
+
+### Pitfall: reading z_R = πω₀²/(M²λ) without substituting ω₀
+
+The z_R formula has M² in the denominator, which makes it look like z_R ∝ 1/M². That conclusion is only valid if you hold ω₀ fixed (e.g., comparing two beams pre-shaped to the same waist size). **At fixed focusing geometry**, ω₀ itself scales as M², so substituting back:
+
+```
+z_R = π · (M²·λF/(π·ω_f))² / (M²·λ) = M² · λ · F² / (π · ω_f²)
+```
+
+Net effect: z_R ∝ M². The bigger focused spot diverges more slowly, so the Rayleigh range grows. Two competing M² factors (one from ω₀², one from the explicit denominator) leave a net linear M² in the numerator.
 
 ### Engineer's intuition
 
-A beam with M² = 2 has 4× the spot area and half the DoF compared to M² = 1 at the same focusing geometry. Total peak fluence at the focal plane drops to 1/4. M² is one of the dominant levers in process performance — it's worth paying for low M² in the laser.
+A beam with M² = 2 vs. M² = 1 at the same focusing geometry has:
+- 2× the waist radius (ω₀ ∝ M²)
+- 4× the focused spot area
+- 2× the Rayleigh range and depth of focus (bigger spot diverges more slowly)
+- 1/4 the peak fluence and peak intensity (energy spread over 4× the area)
+
+The cost of bad beam quality is **peak fluence**, not depth of focus. M² is one of the dominant levers in process performance — pay for low M² when you need high fluence and small features.
 
 For TRUMPF-class fiber lasers, M² ≈ 1.1–1.3 is typical and basically at the practical ceiling.
 
