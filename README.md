@@ -62,6 +62,12 @@ Industrial laser systems are unforgiving. A wrong fluence scratches a wafer. A s
 
 These skills are written for the way real lab and production work actually happens: **one verified step at a time, with the operator deciding when to advance**. Not "let the AI run end-to-end" — **"let Claude be the careful colleague who checks every step before you do it."**
 
+### Who this is for
+
+Industrial laser process engineers across **semiconductor wafer dicing, medical device marking, aerospace ablation, PCB drilling, electronics packaging, and precision micromachining**. The skills and references are domain-agnostic — they cover the general physics of laser-material interaction, beam optics, scanner systems, and DOE methodology. They do not encode any specific company's recipes, customer applications, or proprietary process knowledge.
+
+If you're a process engineer dealing with recurring DOE work for laser ablation, dicing, welding, or scribing — across any of the application areas above — these skills compress the recipe-development cycle by enforcing a step-gated workflow grounded in canonical references.
+
 ---
 
 ## 🧭 Why This Is Different
@@ -320,7 +326,7 @@ Ablation, dicing, and welding share some math but diverge fast. Forcing them int
 
 ## 👤 About the Author
 
-Built by **[Victor Zhu](https://github.com/viczhu92)** — battery manufacturing engineer working at the intersection of energy storage, AI, and renewable energy. Connect on [LinkedIn](https://www.linkedin.com/in/victorzhu1/).
+Built by **[Victor Zhu](https://github.com/viczhu92)** — manufacturing process engineer focused on industrial laser applications across electronics, semiconductor, and precision manufacturing. Connect on [LinkedIn](https://www.linkedin.com/in/victorzhu1/).
 
 ## 🙏 Acknowledgments
 

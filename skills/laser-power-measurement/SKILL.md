@@ -20,7 +20,7 @@ When an operator or engineer needs to make a laser-power measurement — for inc
 
 Ask the operator, one at a time or in a single block:
 
-1. **Laser model and nominal output power** (e.g., "Trumpf 200W-Z, set to 100W").
+1. **Laser model and nominal output power** (e.g., "an industrial 200W ns fiber laser, set to 100W").
 2. **Wavelength** (1064 nm? 532 nm? UV?). Required for the wavelength correction step.
 3. **Detector model** in use, and whether **anticipation** is enabled.
 4. **Where in the beam path** the measurement is being made (after focus lens? Before scanner? At laser output?).

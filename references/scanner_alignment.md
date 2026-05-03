@@ -184,7 +184,7 @@ Adjust `dX`, `dY`, `Yaw`, `Pitch` by steering the laser source until both target
 | Position into scanner aperture | **< 0.3 mm** |
 | Angle into scanner aperture | **< 5 mrad** (≈ 0.29°) |
 
-**Concrete example:** a typical Trumpf 200W-Z fiber laser has an exit-beam tolerance of **< 0.9 mm and 2.15 mrad (0.12°)** — *larger* than the scanner's input tolerance. The optical path between laser and scanner therefore has to *correct*, not just preserve, the laser's exit pointing. External alignment has to be precise; "good enough" is genuinely not good enough.
+**Concrete example:** a typical industrial 200W-class ns fiber laser may have an exit-beam tolerance of **~ 1 mm and ~ 2 mrad (0.1°)** — *larger* than the scanner's input tolerance. The optical path between laser and scanner therefore has to *correct*, not just preserve, the laser's exit pointing. External alignment has to be precise; "good enough" is genuinely not good enough.
 
 ### Astigmatism and polarization
 

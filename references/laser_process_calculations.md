@@ -13,14 +13,14 @@ Worked examples below use a representative ns fiber-laser ablation setup at indu
 | Parameter | Value | Symbol |
 |---|---|---|
 | Wavelength | 1064 nm | λ |
-| Average power | 200 W | P |
-| Pulse repetition frequency | 200 kHz | PRF |
-| Pulse width | 58 ns | PW |
+| Average power | 150 W | P |
+| Pulse repetition frequency | 100 kHz | PRF |
+| Pulse width | 80 ns | PW |
 | Beam diameter at laser exit | 9.5 mm | D_exit |
 | Beam expander magnification | 1× | BE |
-| M² | 1.3 | M² |
-| Focal length | 160 mm | F |
-| Mark speed | 4 m/s | v |
+| M² | 1.2 | M² |
+| Focal length | 150 mm | F |
+| Mark speed | 2 m/s | v |
 | Hatch distance | 20 µm | H |
 
 ---
@@ -31,7 +31,7 @@ Worked examples below use a representative ns fiber-laser ablation setup at indu
 E_pulse = P_avg / PRF
 ```
 
-**Worked example**: 200 W / 200 kHz = 200 / 200,000 = **1 mJ per pulse**
+**Worked example**: 150 W / 100 kHz = 150 / 100,000 = **1.5 mJ per pulse**
 
 **Pitfalls**:
 - PRF must be in Hz, not kHz. Forgetting the 1000x converts gives 1 J pulses (1000x too big).
@@ -54,9 +54,9 @@ D_focus(µm) = 4 · M² · λ(nm) · F(mm) / (π · D_input(mm)) / 1000
 **Worked example**:
 ```
 D_input = BE × D_exit = 1 × 9.5 = 9.5 mm
-D_focus = 4 × 1.3 × 1064 × 160 / (π × 9.5) / 1000
-       = 885,248 / 29.845 / 1000
-       = 29.66 µm
+D_focus = 4 × 1.2 × 1064 × 150 / (π × 9.5) / 1000
+       = 766,080 / 29.845 / 1000
+       = 25.67 µm
 ```
 
 **Pitfalls**:
@@ -76,9 +76,9 @@ F_avg = E_pulse / (π · r²) = E_pulse / (π · (D/2)²)
 
 **Worked example**:
 ```
-r = D_focus / 2 = 14.83 µm = 14.83 × 10⁻⁴ cm
-Spot area = π × (14.83 × 10⁻⁴)² = 6.91 × 10⁻⁶ cm²
-F_avg = 1 × 10⁻³ J / 6.91 × 10⁻⁶ cm² = 144.7 J/cm²
+r = D_focus / 2 = 12.83 µm = 12.83 × 10⁻⁴ cm
+Spot area = π × (12.83 × 10⁻⁴)² = 5.17 × 10⁻⁶ cm²
+F_avg = 1.5 × 10⁻³ J / 5.17 × 10⁻⁶ cm² = 290.1 J/cm²
 ```
 
 **Pitfall**: Unit mixing is the most common error. Stay in SI (J and cm) and convert at the end.
@@ -95,7 +95,7 @@ F_peak = 1.5–1.8 · F_avg    (high M² beams, more spread out)
 F_peak = 1.0 · F_avg        (flat-top beams)
 ```
 
-**Worked example**: 2 × 144.7 = **289.4 J/cm²**
+**Worked example**: 2 × 290.1 = **580.2 J/cm²**
 
 **Pitfall**: Quoting average fluence when comparing against published ablation thresholds (which are typically peak fluence) underestimates real fluence by 2x — leading to either overshoot or under-spec processes.
 
@@ -109,11 +109,11 @@ Power during the pulse itself (not the time-averaged power):
 P_peak = E_pulse / PW
 ```
 
-**Worked example**: 1 mJ / 58 ns = 10⁻³ / 58 × 10⁻⁹ = **17,241 W ≈ 17.2 kW ≈ 0.0172 MW**
+**Worked example**: 1.5 mJ / 80 ns = 1.5 × 10⁻³ / 80 × 10⁻⁹ = **18,750 W ≈ 18.75 kW ≈ 0.0188 MW**
 
 **Unit hack**: mJ / ns = MW directly (because 10⁻³ / 10⁻⁹ = 10⁶ = M).
 
-**Sanity check**: P_peak / P_avg = 1 / (PW × PRF) = 1 / (58e-9 × 200e3) = 1 / 0.0116 = 86. So peak power is ~86x average for this setup. This ratio = 1/duty cycle is a useful gut check.
+**Sanity check**: P_peak / P_avg = 1 / (PW × PRF) = 1 / (80e-9 × 100e3) = 1 / 0.008 = 125. So peak power is ~125x average for this setup. This ratio = 1/duty cycle is a useful gut check.
 
 ---
 
@@ -127,7 +127,7 @@ I_peak = P_peak / (π · r²)
 
 **Worked example**:
 ```
-I_peak = 17,241 W / 6.91 × 10⁻⁶ cm² = 2.50 × 10⁹ W/cm² = 2.50 GW/cm²
+I_peak = 18,750 W / 5.17 × 10⁻⁶ cm² = 3.63 × 10⁹ W/cm² = 3.63 GW/cm²
 ```
 
 **Sanity-check magnitudes for laser-material interaction regimes**:
@@ -151,12 +151,12 @@ DoF = 2 · z_R                    (two-sided "Depth of Focus")
 
 **Worked example**:
 ```
-ω₀ = D_focus / 2 = 14.83 µm = 14.83 × 10⁻⁶ m
-ω₀² = 2.20 × 10⁻¹⁰ m²
-z_R = π × 2.20 × 10⁻¹⁰ / (1.3 × 1064 × 10⁻⁹)
-    = 6.91 × 10⁻¹⁰ / 1.38 × 10⁻⁶
-    = 5.00 × 10⁻⁴ m = 0.50 mm
-DoF = 1.00 mm
+ω₀ = D_focus / 2 = 12.83 µm = 12.83 × 10⁻⁶ m
+ω₀² = 1.65 × 10⁻¹⁰ m²
+z_R = π × 1.65 × 10⁻¹⁰ / (1.2 × 1064 × 10⁻⁹)
+    = 5.18 × 10⁻¹⁰ / 1.28 × 10⁻⁶
+    = 4.05 × 10⁻⁴ m = 0.405 mm
+DoF = 0.81 mm
 ```
 
 **Engineering rule**: Worst-case workpiece Z-axis flatness deviation must be much less than z_R for stable processing.
@@ -175,12 +175,12 @@ F(Δz) = F₀ / (D(Δz) / D₀)²       (fluence drops as area grows)
 I(Δz) = I₀ / (D(Δz) / D₀)²
 ```
 
-**Worked example** at Δz = 0.25 mm (= 0.5 z_R):
+**Worked example** at Δz = 0.20 mm (≈ 0.5 z_R):
 ```
 ratio = √(1 + 0.5²) = √1.25 = 1.118
-D(Δz) = 29.66 × 1.118 = 33.17 µm
-F(Δz) = 144.7 / 1.118² = 144.7 / 1.25 = 115.7 J/cm²  (~80% of focal plane)
-I(Δz) = 2.50 / 1.25 = 2.00 GW/cm²
+D(Δz) = 25.67 × 1.118 = 28.70 µm
+F(Δz) = 290.1 / 1.118² = 290.1 / 1.25 = 232.1 J/cm²  (~80% of focal plane)
+I(Δz) = 3.63 / 1.25 = 2.90 GW/cm²
 ```
 
 **Useful rules of thumb**:
@@ -202,11 +202,11 @@ Power transmitted by a Gaussian beam (1/e² diameter D) through a circular apert
 P_transmitted = P · (1 - exp(-2 · (A/D)²))
 ```
 
-**Worked example**: 200 W beam (D = 9.5 mm) through 14 mm aperture:
+**Worked example**: 150 W beam (D = 9.5 mm) through 14 mm aperture:
 ```
 (A/D)² = (14/9.5)² = 2.17
 1 - exp(-2 × 2.17) = 1 - exp(-4.34) = 1 - 0.013 = 0.987
-P_transmitted = 200 × 0.987 = 197.4 W   (1.3% loss)
+P_transmitted = 150 × 0.987 = 148.0 W   (1.3% loss)
 ```
 
 **Quick reference**:
@@ -230,7 +230,7 @@ Distance between adjacent pulse centers along the scan direction:
 Pace = v / PRF
 ```
 
-**Worked example**: 4 m/s / 200 kHz = 4 / 200,000 = 20 × 10⁻⁶ m = **20 µm**
+**Worked example**: 2 m/s / 100 kHz = 2 / 100,000 = 20 × 10⁻⁶ m = **20 µm**
 
 ---
 
@@ -243,9 +243,9 @@ Overlap (%)         = (D - Pace) / D
 Overlap (dia/pace)  = D / Pace
 ```
 
-**Worked example**: D = 29.66 µm, Pace = 20 µm:
-- (29.66 - 20) / 29.66 = 32.6%
-- 29.66 / 20 = 1.48 dia/pace
+**Worked example**: D = 25.67 µm, Pace = 20 µm:
+- (25.67 - 20) / 25.67 = 22.1%
+- 25.67 / 20 = 1.28 dia/pace
 
 **Engineering ranges**:
 
