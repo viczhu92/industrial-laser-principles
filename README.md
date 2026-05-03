@@ -83,16 +83,17 @@ The whole point is to be **wrong less often, in places that matter**.
 
 ### Use with Claude Code (recommended)
 
+**Option 1 — Install as a plugin (one command, all 7 skills + references included):**
+
+```
+/plugin install viczhu92/industrial-laser-principles
+```
+
+**Option 2 — Manual clone + copy:**
+
 ```bash
 git clone https://github.com/viczhu92/industrial-laser-principles.git
 cd industrial-laser-principles
-```
-
-Then either:
-- **Point Claude Code at this directory** as a skill source, or
-- **Copy the contents** into your existing Claude skill folder:
-
-```bash
 cp -r skills/*    ~/.claude/skills/
 cp -r references/ ~/.claude/references/    # if your setup loads from there
 cp INSTRUCTIONS.md ~/.claude/instructions/
@@ -103,6 +104,8 @@ Then, in any Claude Code session, just describe what you need:
 > *"Help me develop a DOE for ablating 50 µm of anodized aluminum at 1064 nm"*
 
 Claude will pick up `laser-doe-ablation`, read the relevant references, and walk you through the **surface → depth → volume** workflow with a pause at each step.
+
+> **Note:** The plugin install path requires Claude Code (CLI). Claude Desktop and Claude.ai (web) do not support plugins — they have their own per-skill upload mechanism. A separate Claude.ai-ready zip distribution is on the roadmap.
 
 ### Use as a reference library (no agent required)
 
